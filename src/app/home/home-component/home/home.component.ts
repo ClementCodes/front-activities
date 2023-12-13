@@ -15,6 +15,9 @@ export class HomeComponent {
   date: Date | undefined;
   msg = '';
   testGit = "test";
+  testGitE = "test";
+
+
   constructor() { }
 
   ngOnInit() {
