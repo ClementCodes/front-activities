@@ -1,0 +1,20 @@
+<p>
+  home works!
+</p>
+<button>lkjzfbnilk</button>
+
+<div class="card flex justify-content-center">
+  <div class="flex-auto">
+    <label for="alphabetic" class="font-bold block mb-2"> Alphabetic </label>
+    <input pInputText id="alphabetic" pKeyFilter="alpha" class="w-full" placeholder="Normal" />
+  </div>
+  <div class="flex-auto">
+    <label for="alphanumeric" class="font-bold block mb-2"> Alphanumeric </label>
+    <input pInputText id="alphanumeric" pKeyFilter="alphanum" class="w-full" />
+  </div>
+  <p-calendar [(ngModel)]="date" [showIcon]="true"></p-calendar>
+  <button pButton label="" class="p-button-success">large</button>
+
+  <h1>Playground</h1>
+  <input pInputText type="text" [(ngModel)]="msg" />
+  <p>{{ msg }}</p>
