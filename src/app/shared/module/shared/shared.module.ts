@@ -8,7 +8,7 @@ import { InputTextModule } from 'primeng/inputtext';
 @NgModule({
   imports: [CommonModule, CalendarModule, FormsModule, KeyFilterModule, InputTextModule
   ],
-  exports: [CommonModule, CalendarModule, FormsModule, KeyFilterModule, InputTextModule
+  exports: [CommonModule, CalendarModule, FormsModule, KeyFilterModule, InputTextModule,SharedComponent
   ],
   declarations: [SharedComponent]
 })
