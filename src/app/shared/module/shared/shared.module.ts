@@ -1,15 +1,19 @@
 import { NgModule } from '@angular/core';
-import { SharedComponent } from './shared.component';
 import { CommonModule } from '@angular/common';
 import { CalendarModule } from 'primeng/calendar';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { KeyFilterModule } from 'primeng/keyfilter';
 import { InputTextModule } from 'primeng/inputtext';
+import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from '../../../pages/home/home-component/home/home.component';
+import { PlanteServiceService } from '../../../service/PlanteService.service';
+import { PageJardinComponent } from '../../../pages/mon jardin/pageJardin/pageJardin.component';
 @NgModule({
-  imports: [CommonModule, CalendarModule, FormsModule, KeyFilterModule, InputTextModule
+  imports: [CommonModule, CalendarModule, FormsModule, KeyFilterModule, InputTextModule, ReactiveFormsModule, HttpClientModule]
+  ,
+  exports: [HttpClientModule
   ],
-  exports: [CommonModule, CalendarModule, FormsModule, KeyFilterModule, InputTextModule,SharedComponent
-  ],
-  declarations: [SharedComponent]
+  providers: [PlanteServiceService, HomeComponent],
+  declarations: [HomeComponent, PageJardinComponent]
 })
 export class SharedModule { }

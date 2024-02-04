@@ -1,23 +1,27 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Plante } from '../Plante';
+import { Observable } from 'rxjs';
 
 
 const routes = {
   plante: '/plante'
 };
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class PlanteServiceService {
 
-  constructor(private readonly httpClient: HttpClient) { }
+  private apiUrl = 'https://plantes';
 
+  constructor(private http: HttpClient) { }
 
-  public CreationPlante(plante: Plante) {
-    
-    this.httpClient.post<void>(`${routes}/enregistrer`, plante);
+  sauvegarderPlante(plante: Plante): Observable<any> {
+    return this.http.post(this.apiUrl, plante);
   }
+
+
 
 }
