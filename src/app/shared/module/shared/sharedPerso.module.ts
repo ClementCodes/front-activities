@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { PlanteServiceService } from '../../../service/PlanteService.service';
+import { PlanteServiceService } from '../../../service/Plante.service';
 import { PageJardinComponent } from '../../../pages/mon jardin/pageJardin/pageJardin.component';
 @NgModule({
   imports: []

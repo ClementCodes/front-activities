@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { PlanteServiceService } from '../../../../service/PlanteService.service';
 import { CalendarModule } from 'primeng/calendar';
+import { PlanteService } from '../../../../service/Plante.service';
 
 
 @Component({
@@ -20,7 +20,7 @@ export class HomeComponent {
   formPlante!: FormGroup;
 
 
-  constructor(private formBulder: FormBuilder, private router: Router, private planteService: PlanteServiceService
+  constructor(private formBulder: FormBuilder, private router: Router, private planteService: PlanteService
   ) {
 
 
@@ -40,7 +40,7 @@ export class HomeComponent {
     if (this.formPlante?.valid) {
       console.log("formulaire soumis")
 
-      this.planteService.sauvegarderPlante(this.formPlante.value).subscribe(() => {
+      this.planteService.createPlante(this.formPlante.value).subscribe(() => {
         console.log("Plante sauvegardée avec succès !");
         this.router.navigate(['/jardin']);
       });
