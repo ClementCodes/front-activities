@@ -3,9 +3,9 @@
 
 export class Plante{
 
-    nomPlante?: string;
-    agePlante?: Date;
-    dateArrosage? : Date;
+    nom?: string;
+    age?: string;
+    dateArrosage?: string;
 
 
 }

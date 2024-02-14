@@ -20,5 +20,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.primengConfig.ripple = true;
+
+    console.log("application pour l'ecologie  initialisée")
   }
 }

@@ -14,8 +14,8 @@ import { CalendarModule } from 'primeng/calendar';
 })
 export class HomeComponent {
 
-  nomPlante!: string;
-  agePlante!: Date;
+  nom!: string;
+  age!: Date;
   dateArrosage!: Date;
   formPlante!: FormGroup;
 
@@ -28,8 +28,8 @@ export class HomeComponent {
 
   ngOnInit() {
     this.formPlante = this.formBulder.group({
-      nomPlante: ["", Validators.required],
-      agePlante: ["", Validators.required],
+      nom: ["", Validators.required],
+      age: ["", Validators.required],
       dateArrosage: ["", Validators.required]
 
     })
@@ -39,10 +39,11 @@ export class HomeComponent {
   onSubmit() {
     if (this.formPlante?.valid) {
       console.log("formulaire soumis")
-      console.log(this.formPlante.value)
-      this.planteService.sauvegarderPlante(this.formPlante.value)
-      console.log('firstadda')
-      this.router.navigate(['/jardin']);
+
+      this.planteService.sauvegarderPlante(this.formPlante.value).subscribe(() => {
+        console.log("Plante sauvegardée avec succès !");
+        this.router.navigate(['/jardin']);
+      });
 
     }
 

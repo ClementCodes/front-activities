@@ -3,17 +3,17 @@
 </h1>
 <form [formGroup]="formPlante" (ngSubmit)="onSubmit()">
     <div> <label for="alphabetic" class="font-bold block mb-2"> Nom de la Plante </label>
-        <input formControlName="nomPlante" pInputText id="alphabetic" pKeyFilter="alpha" class="w-full"
+        <input formControlName="nom" pInputText id="alphabetic" pKeyFilter="alpha" class="w-full"
             placeholder="Nom.." />
     </div>
     <div> <label for="alphabetic" class="font-bold block mb-2">Age de la plante </label>
 
-        <p-calendar formControlName="agePlante" [showIcon]="true"></p-calendar>
+        <p-calendar formControlName="age" dateFormat="dd.mm.yy" [showIcon]="true"></p-calendar>
     </div>
 
     <div><label for="alphabetic" class="font-bold block mb-2">Date du dernier arrosage </label>
 
-        <p-calendar formControlName="dateArrosage" [showIcon]="true"></p-calendar>
+        <p-calendar formControlName="dateArrosage" dateFormat="dd.mm.yy" [showIcon]="true"></p-calendar>
     </div>
 
     <button type="submit">Soummettre</button>
