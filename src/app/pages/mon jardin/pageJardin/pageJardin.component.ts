@@ -9,7 +9,7 @@ import { Plante } from '../../../Plante';
   standalone: true,
   imports: [PlanteModule, CommonModule],
   templateUrl: './pageJardin.component.html',
-  styleUrls: ['./pageJardin.component.css']
+  styleUrls: ['./pageJardin.component.scss']
 })
 export class PageJardinComponent implements OnInit {
 

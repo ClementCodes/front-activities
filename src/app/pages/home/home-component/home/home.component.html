@@ -1,6 +1,8 @@
 <h1>
     Bienvenue
 </h1>
+<h2>page jardin</h2>
+<input type="button" (click)="allerVersAutrePage()" value=" âge jardin">
 <form [formGroup]="formPlante" (ngSubmit)="onSubmit()">
     <div> <label for="alphabetic" class="font-bold block mb-2"> Nom de la Plante </label>
         <input formControlName="nom" pInputText id="alphabetic" pKeyFilter="alpha" class="w-full"

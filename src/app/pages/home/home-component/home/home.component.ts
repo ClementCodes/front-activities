@@ -49,4 +49,8 @@ export class HomeComponent {
 
   }
 
+  allerVersAutrePage(): void {
+    this.router.navigate(['/jardin']); // Navigue vers la route '/autre-page'
+  }
+
 }

@@ -1,10 +1,16 @@
-<h1>Composant plante</h1>
 <div *ngFor="let plante of plantes">
-  <p>{{plante.nom}} </p>
-  <p>{{plante.age}} </p>
-  <p>{{plante.dateArrosage}} </p>
+  <p-card styleClass="custom-card" header="{{plante.nom}}" subheader="{{plante.age}}" [style]="{ width: '360px' }">
+    <ng-template pTemplate="header">
+    </ng-template>
+    <p>Date d'arrosage : {{plante.dateArrosage}} </p>
+    <ng-template pTemplate="footer">
+      <p-button label="Save" icon="pi pi-check"></p-button>
+      <p-button label="Cancel" icon="pi pi-times" styleClass="p-button-secondary"
+        [style]="{ 'margin-left': '.5em' }"></p-button>
+    </ng-template>
+  </p-card>
+  </div>
 
 
 
-</div>
 

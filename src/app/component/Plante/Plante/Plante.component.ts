@@ -5,7 +5,7 @@ import { PlanteService } from '../../../service/Plante.service';
 @Component({
   selector: 'app-Plante',
   templateUrl: './Plante.component.html',
-  styleUrls: ['./Plante.component.css']
+  styleUrls: ['./Plante.component.scss']
 })
 export class PlanteComponent implements OnInit {
 
