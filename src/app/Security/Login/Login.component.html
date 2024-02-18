@@ -1,0 +1,28 @@
+<div>
+  <h1> La login green</h1>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div>
+      <input pInputText type="email" placeholder="Adresse mail" formControlName="email" />
+    </div>
+    <br>
+    <p-password placeholder="mot de passe" [toggleMask]="true" formControlName="password">
+      <ng-template pTemplate="header">
+        <h6>Pick a password</h6>
+      </ng-template>
+      <ng-template pTemplate="footer">
+        <p-divider></p-divider>
+        <p class="mt-2">Suggestions</p>
+        <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
+          <li>At least one lowercase</li>
+          <li>At least one uppercase</li>
+          <li>At least one numeric</li>
+          <li>Minimum 8 characters</li>
+        </ul>
+      </ng-template>
+    </p-password>
+    <div>
+    </div>
+    <br>
+    <p-button [disabled]="!form.valid" label="Soummettre"></p-button>
+  </form>
+</div>

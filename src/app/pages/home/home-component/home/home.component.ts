@@ -1,26 +1,26 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
+import { PlanteServiceService } from '../../../../service/PlanteService.service';
 import { CalendarModule } from 'primeng/calendar';
-import { PlanteService } from '../../../../service/Plante.service';
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CalendarModule, ReactiveFormsModule, CalendarModule],
+  imports: [CalendarModule, ReactiveFormsModule, CalendarModule, RouterOutlet],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
 
-  nom!: string;
-  age!: Date;
+  nomPlante!: string;
+  agePlante!: Date;
   dateArrosage!: Date;
   formPlante!: FormGroup;
 
 
-  constructor(private formBulder: FormBuilder, private router: Router, private planteService: PlanteService
+  constructor(private formBulder: FormBuilder, private router: Router, private planteService: PlanteServiceService
   ) {
 
 
@@ -28,8 +28,8 @@ export class HomeComponent {
 
   ngOnInit() {
     this.formPlante = this.formBulder.group({
-      nom: ["", Validators.required],
-      age: ["", Validators.required],
+      nomPlante: ["", Validators.required],
+      agePlante: ["", Validators.required],
       dateArrosage: ["", Validators.required]
 
     })
@@ -39,18 +39,13 @@ export class HomeComponent {
   onSubmit() {
     if (this.formPlante?.valid) {
       console.log("formulaire soumis")
-
-      this.planteService.createPlante(this.formPlante.value).subscribe(() => {
-        console.log("Plante sauvegardée avec succès !");
-        this.router.navigate(['/jardin']);
-      });
+      console.log(this.formPlante.value)
+      this.planteService.sauvegarderPlante(this.formPlante.value)
+      console.log('firstadda')
+      this.router.navigate(['/jardin']);
 
     }
 
-  }
-
-  allerVersAutrePage(): void {
-    this.router.navigate(['/jardin']); // Navigue vers la route '/autre-page'
   }
 
 }
