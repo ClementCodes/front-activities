@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Plante } from '../../../Plante';
+
 import { PlanteService } from '../../../service/Plante.service';
+import { Plante } from '../../../interface/Plante';
 
 @Component({
   selector: 'app-Plante',

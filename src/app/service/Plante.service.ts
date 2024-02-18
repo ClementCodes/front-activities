@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Plante } from '../Plante';
 import { Observable } from 'rxjs';
 import { environment } from '../../environement/environment';
+import { Plante } from '../interface/Plante';
 
 
 const routes = {

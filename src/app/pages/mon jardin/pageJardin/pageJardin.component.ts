@@ -3,7 +3,7 @@ import { PlanteComponent } from '../../../component/Plante/Plante/Plante.compone
 import { PlanteModule } from '../../../shared/module/plante/plante.module';
 import { CommonModule } from '@angular/common';
 import { PlanteService } from '../../../service/Plante.service';
-import { Plante } from '../../../Plante';
+import { Plante } from '../../../interface/Plante';
 @Component({
   selector: 'app-pageJardin',
   standalone: true,
