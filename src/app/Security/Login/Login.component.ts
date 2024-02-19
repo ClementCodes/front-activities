@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
       // Rediriger vers la page d'accueil ou toute autre page après la connexion réussie
       this.router.navigateByUrl('/');
     }, error => {
-      console.log('Erreur de connexion :', error);
+      console.log('Erreur de connexion mec :', error);
       // Gérer les erreurs d'authentification
     });
   }
