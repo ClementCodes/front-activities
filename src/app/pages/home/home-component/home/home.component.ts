@@ -17,17 +17,14 @@ export class HomeComponent {
   nomPlante!: string;
   agePlante!: Date;
   dateArrosage!: Date;
-  formPlante!: FormGroup;
+  form!: FormGroup;
 
 
   constructor(private formBulder: FormBuilder, private router: Router, private planteService: PlanteService
   ) {
 
 
-  }
-
-  ngOnInit() {
-    this.formPlante = this.formBulder.group({
+    this.form = this.formBulder.group({
       nomPlante: ["", Validators.required],
       agePlante: ["", Validators.required],
       dateArrosage: ["", Validators.required]
@@ -36,11 +33,20 @@ export class HomeComponent {
 
   }
 
+  ngOnInit() {
+
+    console.log(this.form.valid)
+  }
+
+
+
+
+
   onSubmit() {
-    if (this.formPlante?.valid) {
+    if (this.form?.valid) {
       console.log("formulaire soumis")
-      console.log(this.formPlante.value)
-      this.planteService.createPlante(this.formPlante.value)
+      console.log(this.form.value)
+      this.planteService.createPlante(this.form.value)
       console.log('firstadda')
       this.router.navigate(['/jardin']);
 

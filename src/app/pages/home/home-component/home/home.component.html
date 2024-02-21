@@ -4,7 +4,7 @@
 <h1>
     Bienvenue
 </h1>
-<form [formGroup]="formPlante" (ngSubmit)="onSubmit()">
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div> <label for="alphabetic" class="font-bold block mb-2"> Nom de la Plante </label>
         <input formControlName="nomPlante" pInputText id="alphabetic" pKeyFilter="alpha" class="w-full"
             placeholder="Nom.." />

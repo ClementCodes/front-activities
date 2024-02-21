@@ -3,13 +3,21 @@ import { RouterOutlet } from '@angular/router';
 import { PrimeNGConfig } from 'primeng/api';
 import { CommonModule } from '@angular/common';
 import { CalendarModule } from 'primeng/calendar';
-import { LoginComponent } from './Security/Login/Login.component';
+import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
+import { ReactiveFormsModule } from '@angular/forms';
+import { DividerModule } from 'primeng/divider';
+import { PasswordModule } from 'primeng/password';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, CalendarModule, LoginComponent
-  ],
+  imports: [CommonModule,
+    ReactiveFormsModule,
+    CommonModule, CardModule, ButtonModule,
+    DividerModule,
+    PasswordModule,
+    RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
