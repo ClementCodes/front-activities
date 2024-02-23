@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { PlanteComponent } from '../../../component/Plante/Plante/Plante.component';
-import { PlanteModule } from '../../../shared/module/plante/plante.module';
 import { CommonModule } from '@angular/common';
-import { PlanteService } from '../../../service/Plante.service';
-import { Plante } from '../../../interface/Plante';
+import { Plante } from '../../../../interface/Plante';
+import { PlanteService } from '../../../../service/Plante.service';
+import { PlanteModule } from '../../../../shared/module/plante/plante.module';
 @Component({
   selector: 'app-pageJardin',
   standalone: true,

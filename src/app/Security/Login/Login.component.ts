@@ -8,8 +8,8 @@ import { CardModule } from 'primeng/card';
 import { DividerModule } from 'primeng/divider';
 import { PasswordModule } from 'primeng/password';
 import { InputTextModule } from 'primeng/inputtext';
-import { AxiosService } from '../../service/Axios/Axios.service';
-import { response } from 'express';
+import { HttpService } from '../../service/Axios/HttpService ';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-Login',
@@ -19,7 +19,7 @@ import { response } from 'express';
     CommonModule, CardModule, ButtonModule,
     DividerModule,
     PasswordModule,
-    InputTextModule],
+    InputTextModule, HttpClientModule],
   templateUrl: './Login.component.html',
   styleUrls: ['./Login.component.scss']
 })
@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
 
 
   constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder,
-    private axiosService: AxiosService) {
+    private httpService: HttpService) {
 
     this.form = this.formBuilder.group({
       email: ["", Validators.required],
@@ -43,39 +43,40 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.axiosService.request(
-      "GET",
-      "/messages",
-      {}
-    ).then((response) => this.data = response.data
-    )
-
-
-
-
-  }
-
-  onSubmit() {
-    if (this.form.valid) {
-      // Si le formulaire est valide, on procède à la connexion
-      this.login();
-    } else {
-      console.log("Le formulaire n'est pas valide");
-    }
-  }
-
-  login(): void {
-    const credentials = {
-      username: this.form.value.email,
-      password: this.form.value.password
-    };
-
-    this.authService.login(credentials).subscribe(() => {
-      // Redirection après une connexion réussie
-      this.router.navigateByUrl('/login');
-    }, error => {
-      console.log('Erreur de connexion :', error);
-      // Gestion des erreurs d'authentification
+    this.httpService.fetchData().subscribe({
+      next: (response) => {
+        this.data = response;
+      },
+      error: (error) => {
+        console.error('Une erreur est survenue :', error);
+        // Vous pouvez également gérer l'erreur ici, par exemple :
+        // this.errorMessage = "Une erreur est survenue lors du chargement des données. Veuillez réessayer plus tard.";
+      }
     });
   }
+
+
+  onSubmit() {
+    // if (this.form.valid) {
+    //   // Si le formulaire est valide, on procède à la connexion
+    //   this.login();
+    // } else {
+    //   console.log("Le formulaire n'est pas valide");
+    // }
+  }
+
+  // login(): void {
+  //   const credentials = {
+  //     username: this.form.value.email,
+  //     password: this.form.value.password
+  //   };
+
+  //   this.authService.login(credentials).subscribe(() => {
+  //     // Redirection après une connexion réussie
+  //     this.router.navigateByUrl('/login');
+  //   }, error => {
+  //     console.log('Erreur de connexion :', error);
+  //     // Gestion des erreurs d'authentification
+  //   });
+  // }
 }

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterOutlet } from '@angular/router';
 import { CalendarModule } from 'primeng/calendar';
-import { PlanteService } from '../../../../service/Plante.service';
+import { PlanteService } from '../../../../../service/Plante.service';
 
 
 @Component({

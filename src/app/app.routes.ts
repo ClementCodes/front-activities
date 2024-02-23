@@ -1,8 +1,8 @@
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './pages/home/home-component/home/home.component';
-import { PageJardinComponent } from './pages/mon jardin/pageJardin/pageJardin.component';
 import { NgModule } from '@angular/core';
 import { LoginComponent } from './Security/Login/Login.component';
+import { PageJardinComponent } from './Security/pages/mon jardin/pageJardin/pageJardin.component';
+import { HomeComponent } from './Security/pages/home/home-component/home/home.component';
 
 
 export const routes: Routes = [
