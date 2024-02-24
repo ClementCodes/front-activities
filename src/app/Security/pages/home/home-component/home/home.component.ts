@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Router, RouterOutlet } from '@angular/router';
 import { CalendarModule } from 'primeng/calendar';
 import { PlanteService } from '../../../../service/Plante.service';
+import { Plante } from '../../../../interface/Plante';
 
 
 @Component({
@@ -19,34 +20,32 @@ export class HomeComponent {
   dateArrosage!: Date;
   formPlante!: FormGroup;
 
-
-  constructor(private formBulder: FormBuilder, private router: Router, private planteService: PlanteService
-  ) {
-
-
-  }
+  constructor(private formBulder: FormBuilder, private router: Router, private planteService: PlanteService) { }
 
   ngOnInit() {
     this.formPlante = this.formBulder.group({
       nom: ["", Validators.required],
       age: ["", Validators.required],
       dateArrosage: ["", Validators.required]
-
-    })
-
+    });
   }
 
   onSubmit() {
-    if (this.formPlante?.valid) {
-      console.log("formulaire soumis")
-      console.log(this.formPlante.value)
-      this.planteService.createPlante(this.formPlante.value)
-      console.log('firstadda')
-      this.router.navigate(['/jardin']);
+    if (this.formPlante.valid) {
+      console.log("Formulaire soumis");
+
+      this.planteService.createPlante(this.formPlante.value).subscribe({
+        next: (plante: Plante) => {
+
+          this.router.navigate(['/jardin']);
+          console.log(plante)
+        },
+        error: (e) => console.error(e),
+        complete: () => console.info('complete')
+
+      })
 
 
     }
-
   }
-
 }

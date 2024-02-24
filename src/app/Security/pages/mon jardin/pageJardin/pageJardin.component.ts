@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { PlanteModule } from '../../../shared/module/plante/plante.module';
 import { CommonModule } from '@angular/common';
-import { Plante } from '../../../../interface/Plante';
-import { PlanteService } from '../../../../service/Plante.service';
-import { PlanteModule } from '../../../../shared/module/plante/plante.module';
+import { PlanteService } from '../../../service/Plante.service';
+import { Plante } from '../../../interface/Plante';
+import { Subject, tap } from 'rxjs';
 @Component({
   selector: 'app-pageJardin',
   standalone: true,
@@ -14,8 +15,10 @@ export class PageJardinComponent implements OnInit {
 
   plantes: Plante[] = [];
 
+  loading$: Subject<boolean> = new Subject<boolean>();
+  constructor(private planteService: PlanteService) {
 
-  constructor(private planteService: PlanteService) { }
+  }
 
   ngOnInit() {
 
@@ -26,7 +29,9 @@ export class PageJardinComponent implements OnInit {
 
 
   obtenirToutesPlantes(): void {
-    this.planteService.getToutesPlantes().subscribe(
+    this.planteService.getToutesPlantes().pipe(
+      tap(() => this.loading$.next(false)) // Terminer le chargement
+    ).subscribe(
       (plantes: Plante[]) => {
         this.plantes = plantes; // Stockez les plantes récupérées dans la propriété du composant
       },
@@ -36,3 +41,4 @@ export class PageJardinComponent implements OnInit {
     );
   }
 }
+

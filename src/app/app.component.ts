@@ -1,37 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { PrimeNGConfig } from 'primeng/api';
+import { Router, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { CalendarModule } from 'primeng/calendar';
-import { ButtonModule } from 'primeng/button';
-import { CardModule } from 'primeng/card';
-import { ReactiveFormsModule } from '@angular/forms';
-import { DividerModule } from 'primeng/divider';
-import { PasswordModule } from 'primeng/password';
+import { LoginComponent } from './Security/Login/Login.component';
+import { AppService } from './service/App.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule,
-    ReactiveFormsModule,
-    CommonModule, CardModule, ButtonModule,
-    DividerModule,
-    PasswordModule,
-    RouterOutlet],
+  imports: [RouterOutlet, CommonModule, CalendarModule, LoginComponent
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
+  constructor(private app: AppService, private http: HttpClient, private router: Router) {
 
-
-  value!: string;
-  constructor(private primengConfig: PrimeNGConfig) { }
-
-  title = 'my-activities';
-
-  ngOnInit() {
-    this.primengConfig.ripple = true;
-
-    console.log("application pour l'ecologie  initialisée")
   }
+  ngOnInit(): void {
+    // Ici, vous pouvez initialiser des données ou effectuer d'autres actions lors du chargement du composant
+  }
+
+
+
+
 }
+
