@@ -21,7 +21,7 @@ export class PlanteService {
 
   createPlante(plante: Plante): Observable<Plante> {
 
-    console.log(this.apiUrl + '/plantes')
+    console.log(this.apiUrl + '/plantes', plante)
     return this.http.post(`${this.apiUrl}/plantes`, plante);
   }
 
