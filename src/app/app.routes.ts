@@ -3,19 +3,24 @@ import { NgModule } from '@angular/core';
 import { LoginComponent } from './Security/Login/Login.component';
 import { PageJardinComponent } from './Security/pages/mon jardin/pageJardin/pageJardin.component';
 import { HomeComponent } from './Security/pages/home/home-component/home/home.component';
+import { JardinComponent } from './component/jardin/jardin/jardin.component';
 
 
 export const routes: Routes = [
     {
+        path: '', pathMatch: 'full', redirectTo: 'home'
+
+    },
+    {
         path: 'home',
         component: HomeComponent
+    }, {
+        path: 'login',
+        component: LoginComponent
     },
     {
         path: 'jardin',
-        component: PageJardinComponent
-    }, {
-        path: '',
-        component: LoginComponent
+         component: JardinComponent
     }
 ];
 
