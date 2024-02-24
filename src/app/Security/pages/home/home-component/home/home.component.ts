@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterOutlet } from '@angular/router';
 import { CalendarModule } from 'primeng/calendar';
-import { PlanteService } from '../../../../../service/Plante.service';
+import { PlanteService } from '../../../../service/Plante.service';
 
 
 @Component({
@@ -14,41 +14,36 @@ import { PlanteService } from '../../../../../service/Plante.service';
 })
 export class HomeComponent {
 
-  nomPlante!: string;
-  agePlante!: Date;
+  nom!: string;
+  age!: Date;
   dateArrosage!: Date;
-  form!: FormGroup;
+  formPlante!: FormGroup;
 
 
   constructor(private formBulder: FormBuilder, private router: Router, private planteService: PlanteService
   ) {
 
 
-    this.form = this.formBulder.group({
-      nomPlante: ["", Validators.required],
-      agePlante: ["", Validators.required],
+  }
+
+  ngOnInit() {
+    this.formPlante = this.formBulder.group({
+      nom: ["", Validators.required],
+      age: ["", Validators.required],
       dateArrosage: ["", Validators.required]
 
     })
 
   }
 
-  ngOnInit() {
-
-    console.log(this.form.valid)
-  }
-
-
-
-
-
   onSubmit() {
-    if (this.form?.valid) {
+    if (this.formPlante?.valid) {
       console.log("formulaire soumis")
-      console.log(this.form.value)
-      this.planteService.createPlante(this.form.value)
+      console.log(this.formPlante.value)
+      this.planteService.createPlante(this.formPlante.value)
       console.log('firstadda')
       this.router.navigate(['/jardin']);
+
 
     }
 
