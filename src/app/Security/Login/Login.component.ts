@@ -16,6 +16,8 @@ import { PlanteService } from '../../service/Plante.service';
 })
 export class LoginComponent implements OnInit {
 
+  data: string[] = [];
+
   form: FormGroup = new FormGroup({
     email: new FormControl('email'),
     password: new FormControl('password')
@@ -38,8 +40,6 @@ export class LoginComponent implements OnInit {
   navigateToHome() {
     this.router.navigate(['/home']);
   }
-  navigateToPlante() {
-    this.router.navigate(['/plante']);
-  }
+
 
 }

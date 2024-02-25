@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { PlanteModule } from '../../../shared/module/plante/plante.module';
 import { CommonModule } from '@angular/common';
-import { PlanteService } from '../../../service/Plante.service';
-import { Plante } from '../../../interface/Plante';
 import { Subject, tap } from 'rxjs';
+import { Plante } from '../../../../interface/Plante';
+import { PlanteService } from '../../../../service/Plante.service';
+import { PlanteModule } from '../../../../shared/module/plante/plante.module';
 @Component({
   selector: 'app-pageJardin',
   standalone: true,

@@ -8,7 +8,7 @@ import { JardinComponent } from './component/jardin/jardin/jardin.component';
 
 export const routes: Routes = [
     {
-        path: '', pathMatch: 'full', redirectTo: 'home'
+        path: '', pathMatch: 'full', redirectTo: 'login'
 
     },
     {
@@ -20,7 +20,7 @@ export const routes: Routes = [
     },
     {
         path: 'jardin',
-         component: JardinComponent
+        component: PageJardinComponent
     }
 ];
 
