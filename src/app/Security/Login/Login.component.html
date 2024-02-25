@@ -25,7 +25,11 @@
     <br>
     <p-button [disabled]="!form.valid" label="Soummettre" type="submit"></p-button>
     <div>
-      <li *ngFor="let line of data">{{line}}1</li>
+<div *ngFor="let line of data">
+  <ul>
+    <li>{{ line }}</li>
+  </ul>
+</div>
     </div>
     <h1>le login</h1>
   </form>

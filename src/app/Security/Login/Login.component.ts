@@ -7,10 +7,11 @@ import { ButtonModule } from 'primeng/button';
 import { AuthService } from '../../service/security/Auth.service';
 import { Router, RouterLink } from '@angular/router';
 import { PlanteService } from '../../service/Plante.service';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-Login',
   standalone: true,
-  imports: [PasswordModule, DividerModule, InputTextModule, FormsModule, ReactiveFormsModule, ButtonModule],
+  imports: [PasswordModule, DividerModule, InputTextModule, FormsModule, ReactiveFormsModule, ButtonModule, CommonModule],
   templateUrl: './Login.component.html',
   styleUrls: ['./Login.component.scss']
 })
