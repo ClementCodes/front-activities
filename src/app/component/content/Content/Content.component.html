@@ -4,6 +4,6 @@
   <app-WelcomeContent *ngIf="componentToShow == 'welcome'" />
   <app-Login *ngIf="componentToShow == 'login'" (onSubmitLoginEvent)="onLogin($event)"
     (onSubmitRegisterEvent)="onRegister($event)" />
-  <app-AuthContent *ngIf="componentToShow=='messages'" />
+  <app-AuthContent *ngIf="componentToShow =='messages'" />
 
 </div>

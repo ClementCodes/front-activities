@@ -2,12 +2,12 @@
   <div class="col-4">
     <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
       <li class="nav-item" role="presentation">
-        <button [ngClass]="active == 'login' ? 'nav-link active' : 'nav-link'" id="tab-login"
-          (click)="onLoginTab()">Login</button>
+        <p-button [ngClass]="active == 'login' ? 'nav-link active' : 'nav-link'" id="tab-login"
+          (click)="onLoginTab()">Login</p-button>
       </li>
       <li class="nav-item" role="presentation">
-        <button [ngClass]="active == 'register' ? 'nav-link active' : 'nav-link'" id="tab-register"
-          (click)="onRegisterTab()">Register</button>
+        <p-button [ngClass]="active == 'register' ? 'nav-link active' : 'nav-link'" id="tab-register"
+          (click)="onRegisterTab()">Register</p-button>
       </li>
     </ul>
 
@@ -16,16 +16,16 @@
         <form (ngSubmit)="onSubmitLogin()" #loginForm="ngForm">
 
           <div class="form-outline mb-4">
-            <input type="login" id="loginName" name="login" class="form-control" [(ngModel)]="login" />
+            <input type="text" type="login" id="loginName" name="login" class="form-control" [(ngModel)]="login" />
             <label class="form-label" for="loginName">Username</label>
           </div>
 
           <div class="form-outline mb-4">
-            <input type="password" id="loginPassword" name="password" class="form-control" [(ngModel)]="password" />
+            <input type="text" type="password" id="loginPassword" name="password" class="form-control" [(ngModel)]="password" />
             <label class="form-label" for="loginPassword">Password</label>
           </div>
 
-          <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+          <p-button type="submit" class="btn btn-primary btn-block mb-4">Sign in</p-button>
 
         </form>
       </div>
@@ -33,26 +33,26 @@
         <form (ngSubmit)="onSubmitRegister()" #registerForm="ngForm">
 
           <div class="form-outline mb-4">
-            <input type="text" id="firstName" name="firstName" class="form-control" [(ngModel)]="firstName" />
+            <input type="text" type="text" id="firstName" name="firstName" class="form-control" [(ngModel)]="firstName" />
             <label class="form-label" for="firstName">First name</label>
           </div>
 
           <div class="form-outline mb-4">
-            <input type="text" id="lastName" name="lastName" class="form-control" [(ngModel)]="lastName" />
+            <input type="text" type="text" id="lastName" name="lastName" class="form-control" [(ngModel)]="lastName" />
             <label class="form-label" for="lastName">Last name</label>
           </div>
 
           <div class="form-outline mb-4">
-            <input type="text" id="login" name="login" class="form-control" [(ngModel)]="login" />
+            <input type="text" type="text" id="login" name="login" class="form-control" [(ngModel)]="login" />
             <label class="form-label" for="login">Username</label>
           </div>
 
           <div class="form-outline mb-4">
-            <input type="password" id="registerPassword" name="password" class="form-control" [(ngModel)]="password" />
+            <input type="text" type="password" id="registerPassword" name="password" class="form-control" [(ngModel)]="password" />
             <label class="form-label" for="registerPassword">Password</label>
           </div>
 
-          <button type="submit" class="btn btn-primary btn-block mb-3">Sign in</button>
+          <p-button type="submit" class="btn btn-primary btn-block mb-3">Sign in</p-button>
           </form>
           </div>
           </div>

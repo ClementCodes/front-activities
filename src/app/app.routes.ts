@@ -22,10 +22,6 @@ export const routes: Routes = [
     {
         path: 'jardin',
         component: PageJardinComponent
-    },
-    {
-        path: 'register',
-        component: AcceuilComponent
     }
 ];
 

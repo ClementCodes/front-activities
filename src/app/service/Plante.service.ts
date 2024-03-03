@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../environement/environment';
 import { Plante } from '../interface/Plante';
+import { AxiosService } from './Axios/axiosService';
 
 
 const routes = {
@@ -17,7 +18,7 @@ export class PlanteService {
 
   private apiUrl = environment.dev;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private axiosService: AxiosService) { }
 
   createPlante(plante: Plante): Observable<Plante> {
 
@@ -43,6 +44,24 @@ export class PlanteService {
   // DELETE
   deletePlante(id: number): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/plantes/${id}`);
+  }
+
+  getAllPlante(): void {
+    this.axiosService.request(
+      "GET",
+      "/plantes",
+      {
+
+      }).then(
+        response => {
+          this.axiosService.setAuthToken(response.data.token);
+          console.log(response)
+        }).catch(
+          error => {
+            this.axiosService.setAuthToken(null);
+
+          }
+        );
   }
 
 

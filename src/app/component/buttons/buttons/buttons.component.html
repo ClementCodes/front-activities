@@ -1,10 +1,11 @@
 <div class="row">
-  <div class="col-md-12 text-center" style="marginTop: 30px">
-    <button class="btn btn-primary" style="margin: 10px" (click)="loginEvent.emit()">
-      Login
-    </button>
-    <button class="btn btn-dark" style="margin: 10px" (click)="logoutEvent.emit()">
-      Logout
-    </button>
+  <div class="col-md-12 text-center">
+    <p-button label="Login" size="small" [raised]="true" (click)="loginEvent.emit()">
+    </p-button>
   </div>
-</div>
+  <div>
+    <p-button label="Logout" size="small" [raised]="true" (click)="logoutEvent.emit()">
+  
+    </p-button>
+  </div>
+  </div>

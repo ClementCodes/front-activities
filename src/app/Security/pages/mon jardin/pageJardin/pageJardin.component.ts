@@ -28,6 +28,17 @@ export class PageJardinComponent implements OnInit {
 
 
 
+
+
+  getPlantes(): void {
+    this.planteService.getAllPlante();
+
+
+
+
+  }
+
+
   obtenirToutesPlantes(): void {
     this.planteService.getToutesPlantes().pipe(
       tap(() => this.loading$.next(false)) // Terminer le chargement
