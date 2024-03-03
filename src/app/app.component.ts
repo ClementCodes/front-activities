@@ -5,11 +5,13 @@ import { CalendarModule } from 'primeng/calendar';
 import { LoginComponent } from './Security/Login/Login.component';
 import { AppService } from './service/App.service';
 import { HttpClient } from '@angular/common/http';
+import { HeaderComponent } from './component/header/header/header.component';
+import { ContentComponent } from './component/content/Content/Content.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, CalendarModule, LoginComponent
+  imports: [RouterOutlet, CommonModule, CalendarModule, LoginComponent, HeaderComponent, ContentComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

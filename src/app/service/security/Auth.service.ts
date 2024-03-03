@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -29,4 +29,17 @@ export class AuthService {
   isAuthenticated(): boolean {
     return !!localStorage.getItem('token'); // Vérifier si l'utilisateur est authentifié en vérifiant la présence du token JWT
   }
+
+
+  getTestFromUrl(): Observable<string> {
+    // Effectuer une requête GET vers l'URL spécifique et retourner la réponse
+    return this.http.get<string>('/register').pipe(
+      map((response: string) => {
+        // Traitement de la réponse si nécessaire
+        return response;
+      })
+    );
+  }
+
 }
+

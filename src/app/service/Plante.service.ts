@@ -21,13 +21,13 @@ export class PlanteService {
 
   createPlante(plante: Plante): Observable<Plante> {
 
-    console.log(this.apiUrl + '/plantes', plante)
+    console.log(this.apiUrl + '/admin/plantes', plante)
     return this.http.post(`${this.apiUrl}/plantes`, plante);
   }
 
   // READ (GET all plantes)
   getToutesPlantes(): Observable<Plante[]> {
-    return this.http.get<Plante[]>(`${this.apiUrl}/plantes`);
+    return this.http.get<Plante[]>(`${this.apiUrl}/admin/plantes`);
   }
 
   // READ (GET single plante by id)
@@ -45,4 +45,7 @@ export class PlanteService {
     return this.http.delete<any>(`${this.apiUrl}/plantes/${id}`);
   }
 
+
+
 }
+

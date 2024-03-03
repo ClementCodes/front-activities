@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { PasswordModule } from 'primeng/password';
 import { DividerModule } from 'primeng/divider';
 import { InputTextModule } from 'primeng/inputtext';
@@ -16,31 +16,33 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./Login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
-  data: string[] = [];
-
-  form: FormGroup = new FormGroup({
-    email: new FormControl('email'),
-    password: new FormControl('password')
-  });
-
-  constructor(private authService: AuthService, private router: Router, private planteService: PlanteService) { }
-
-  ngOnInit() {
-    console.log(this.form.valid)
-
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
   }
 
-  onSubmit() {
+  @Output() onSubmitLoginEvent = new EventEmitter();
+  @Output() onSubmitRegisterEvent = new EventEmitter();
+
+  active: string = "login";
+  firstName: string = "";
+  lastName: string = "";
+  login: string = "";
+  password: string = "";
+
+  onLoginTab(): void {
+    this.active = "login";
   }
 
-
-  navigateToJardin() {
-    this.router.navigate(['/jardin']);
-  }
-  navigateToHome() {
-    this.router.navigate(['/home']);
+  onRegisterTab(): void {
+    this.active = "register";
   }
 
+  onSubmitLogin(): void {
+    this.onSubmitLoginEvent.emit({ "login": this.login, "password": this.password });
+  }
+
+  onSubmitRegister(): void {
+    this.onSubmitRegisterEvent.emit({ "firstName": this.firstName, "lastName": this.lastName, "login": this.login, "password": this.password });
+  }
 
 }

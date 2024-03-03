@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
-import { PageJardinComponent } from '../../../pages/mon jardin/pageJardin/pageJardin.component';
 import { PlanteService } from '../../../service/Plante.service';
+import { CommonModule } from '@angular/common';
 @NgModule({
-  imports: []
+  imports: [CommonModule]
   ,
-  exports: []
+  exports: [CommonModule]
   ,
   providers: [PlanteService],
   declarations: []
