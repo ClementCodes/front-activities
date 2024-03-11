@@ -13,6 +13,8 @@ import { SharedPersoModule } from '../../../shared/module/shared/sharedPerso.mod
   templateUrl: './Content.component.html',
   styleUrls: ['./Content.component.css']
 })
+
+//petit message pour faire un comit de test pour recuperer sur mac
 export class ContentComponent implements OnInit {
   componentToShow: string = "welcome";
   constructor(private axiosService: AxiosService) { }
