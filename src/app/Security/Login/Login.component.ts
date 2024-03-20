@@ -15,10 +15,8 @@ import { SharedPersoModule } from '../../shared/module/shared/sharedPerso.module
   templateUrl: './Login.component.html',
   styleUrls: ['./Login.component.scss']
 })
-export class LoginComponent implements OnInit {
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
+export class LoginComponent  {
+
 
   @Output() onSubmitLoginEvent = new EventEmitter();
   @Output() onSubmitRegisterEvent = new EventEmitter();

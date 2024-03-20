@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { Subject, tap } from 'rxjs';
 import { Plante } from '../../../../interface/Plante';
 import { PlanteService } from '../../../../service/Plante.service';
-import { PlanteModule } from '../../../../shared/module/plante/plante.module';
+import { SharedModule } from 'primeng/api';
+import { PlanteComponent } from '../../../../component/Plante/Plante/Plante.component';
 @Component({
   selector: 'app-pageJardin',
   standalone: true,
-  imports: [PlanteModule, CommonModule],
+  imports: [SharedModule, CommonModule,PlanteComponent],
   templateUrl: './pageJardin.component.html',
   styleUrls: ['./pageJardin.component.scss']
 })

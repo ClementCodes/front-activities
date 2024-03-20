@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AxiosService } from '../../../service/Axios/axiosService';
+import { AxiosService } from '../../service/Axios/axiosService';
 import { CommonModule } from '@angular/common';
 
 @Component({

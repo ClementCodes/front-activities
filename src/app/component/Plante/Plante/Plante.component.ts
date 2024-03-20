@@ -1,22 +1,19 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { PlanteService } from '../../../service/Plante.service';
 import { Plante } from '../../../interface/Plante';
+import { SharedPersoModule } from '../../../shared/module/shared/sharedPerso.module';
 
 @Component({
   selector: 'app-Plante',
+  standalone:true,
+  imports:[SharedPersoModule],
   templateUrl: './Plante.component.html',
   styleUrls: ['./Plante.component.scss']
 })
-export class PlanteComponent implements OnInit {
+export class PlanteComponent  {
 
   @Input() plantes?: Plante[];
 
 
-  constructor(private planteService: PlanteService) {
-  }
-  ngOnInit() {
-
-
-  }
+ 
 }
