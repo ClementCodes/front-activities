@@ -6,7 +6,7 @@
           [ngClass]="active == 'login' ? 'nav-link active' : 'nav-link'"
           id="tab-login"
           (click)="onLoginTab()"
-          >Login</p-button
+          >Déja enregistré ? </p-button
         >
       </li>
       <li class="nav-item" role="presentation">
@@ -14,16 +14,15 @@
           [ngClass]="active == 'register' ? 'nav-link active' : 'nav-link'"
           id="tab-register"
           (click)="onRegisterTab()"
-          >Register</p-button
+          >Créer un compte</p-button
         >
       </li>
     </ul>
 
 
     <div class="tab-content">
-      <div
-        [ngClass]="active == 'login' ? 'show' : 'hidden'
-        "
+      <div  *ngIf="active =='login' ; else register"
+        
       >
         <form (ngSubmit)="onSubmitLogin()" #loginForm="ngForm">
           <div class="form-outline mb-4">
@@ -35,7 +34,7 @@
               class="form-control"
               [(ngModel)]="login"
             />
-            <label class="form-label" for="loginName">Username</label>
+            <label class="form-label" for="loginName">nom de connection</label>
           </div>
 
           <div class="form-outline mb-4">
@@ -47,19 +46,16 @@
               class="form-control"
               [(ngModel)]="password"
             />
-            <label class="form-label" for="loginPassword">Password</label>
+            <label class="form-label" for="loginPassword">Mot de passe</label>
           </div>
 
           <p-button type="submit" class="btn btn-primary btn-block mb-4"
-            >Sign in</p-button
+            >Se connecter</p-button
           >
         </form>
       </div>
-      <div
-        [ngClass]="
-          active == 'register' ? 'show' : 'hidden'
-        "
-      >
+    <ng-template #register>
+    
         <form (ngSubmit)="onSubmitRegister()" #registerForm="ngForm">
           <div class="form-outline mb-4">
             <input
@@ -110,10 +106,10 @@
           </div>
 
           <p-button type="submit" class="btn btn-primary btn-block mb-3"
-            >Sign in</p-button
+            >S'enregistrer</p-button
           >
         </form>
+      </ng-template>
       </div>
     </div>
   </div>
-</div>

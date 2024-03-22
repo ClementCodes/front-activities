@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { AxiosService } from '../../../service/Axios/axiosService';
+import { AuthService } from '../../../service/Authentification/authService';
 import { WelcomeContentComponent } from '../../../pages/welcome/WelcomeContent/WelcomeContent.component';
 import { LoginComponent } from '../../../Security/Login/Login.component';
 import { AuthContentComponent } from '../../../Security/AuthContent/AuthContent.component';
 import { ButtonsComponent } from '../../buttons/buttons/buttons.component';
 import { SharedPersoModule } from '../../../shared/module/shared/sharedPerso.module';
+import { catchError, map, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-content',
@@ -17,36 +18,38 @@ import { SharedPersoModule } from '../../../shared/module/shared/sharedPerso.mod
 //petit message pour faire un comit de test pour recuperer sur mac
 export class ContentComponent  {
   componentToShow: string = "welcome";
-  constructor(private axiosService: AxiosService) { }
+  constructor(private authService: AuthService) { }
 
 
 
   showComponent(componentToShow: string): void {
     this.componentToShow = componentToShow;
   }
-
   onLogin(input: any): void {
-    this.axiosService.request(
+    this.authService.request(
       "POST",
       "/login",
       {
         login: input.login,
         password: input.password
-      }).then(
-        response => {
-          this.axiosService.setAuthToken(response.data.token);
-          this.componentToShow = "messages";
-        }).catch(
-          error => {
-            this.axiosService.setAuthToken(null);
-            this.componentToShow = "welcome";
-          }
-        );
-
+      }
+    )
+    .pipe(
+      map((response: any) => {
+        this.authService.setAuthToken(response.token);
+        this.componentToShow = "messages";
+      }),
+      catchError((error: any) => {
+        this.authService.setAuthToken(null);
+        this.componentToShow = "welcome";
+        return throwError(error);
+      })
+    )
+    .subscribe();
   }
-
+  
   onRegister(input: any): void {
-    this.axiosService.request(
+    this.authService.request(
       "POST",
       "/register",
       {
@@ -54,18 +57,22 @@ export class ContentComponent  {
         lastName: input.lastName,
         login: input.login,
         password: input.password
-      }).then(
-        response => {
-          this.axiosService.setAuthToken(response.data.token);
-          this.componentToShow = "messages";
-        }).catch(
-          error => {
-            this.axiosService.setAuthToken(null);
-            this.componentToShow = "welcome";
-          }
-        );
+      }
+    )
+    .pipe(
+      map((response: any) => {
+        this.authService.setAuthToken(response.token);
+        this.componentToShow = "messages";
+      }),
+      catchError((error: any) => {
+        this.authService.setAuthToken(null);
+        this.componentToShow = "welcome";
+        return throwError(error);
+      })
+    )
+    .subscribe();
   }
-
-
-
+  
 }
+
+

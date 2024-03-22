@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, map, Observable, throwError } from 'rxjs';
 import { environment } from '../../environement/environment';
 import { Plante } from '../interface/Plante';
-import { AxiosService } from './Axios/axiosService';
+import { AuthService } from './Authentification/authService';
 
 
 const routes = {
@@ -18,7 +18,7 @@ export class PlanteService {
 
   private apiUrl = environment.dev;
 
-  constructor(private http: HttpClient, private axiosService: AxiosService) { }
+  constructor(private http: HttpClient, private authService: AuthService) { }
 
   createPlante(plante: Plante): Observable<Plante> {
 
@@ -45,7 +45,7 @@ export class PlanteService {
   deletePlante(id: number): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/plantes/${id}`);
   }
-
+/* 
   getAllPlante(): void {
     this.axiosService.request(
       "GET",
@@ -62,9 +62,29 @@ export class PlanteService {
 
           }
         );
+  } */
+
+
+
+  getAllPlante(): void {
+    this.authService.request(
+      "GET",
+      "/plantes",
+      {}
+    )
+    .pipe(
+      map((response: any) => {
+        this.authService.setAuthToken(response.token);
+        console.log(response);
+      }),
+      catchError((error: any) => {
+        this.authService.setAuthToken(null);
+        return throwError(error);
+      })
+    )
+    .subscribe();
   }
-
-
+  
 
 }
 

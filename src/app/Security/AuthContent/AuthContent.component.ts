@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { AxiosService } from '../../service/Axios/axiosService';
+import { Component, Inject, OnInit } from '@angular/core';
+import { AuthService } from '../../service/Authentification/authService';
 import { CommonModule } from '@angular/common';
+import { catchError, map, throwError } from 'rxjs';
 
 @Component({
   selector: 'app-AuthContent',
@@ -10,27 +11,48 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./AuthContent.component.css']
 })
 export class AuthContentComponent implements OnInit {
-  data: string[] = [];
+  data: string = "";
 
-  constructor(private axiosService: AxiosService) { }
+  constructor( @Inject(AuthService)private AuthService: AuthService) { }
 
-  ngOnInit(): void {
-    this.axiosService.request(
+/*   ngOnInit(): void {
+    this.AuthService.request(
       "GET",
       "/messages",
       {}).then(
-        (response) => {
+        (response: { data: string[]; }) => {
           this.data = response.data;
         }).catch(
-          (error) => {
+          (error: { response: { status: number; code: string[]; }; }) => {
             if (error.response.status === 401) {
-              this.axiosService.setAuthToken(null);
+              this.AuthService.setAuthToken(null);
             } else {
               this.data = error.response.code;
             }
 
           }
         );
+  } */
+
+  ngOnInit(): void {
+    this.AuthService.request('GET', '/messages', {})
+      .pipe(
+        map(
+          (response: string) => {
+          this.data = response;
+        }),
+        catchError((error: any) => {
+          if (error.status === 401) {
+            this.AuthService.setAuthToken(null);
+          } else {
+            console.error(error); // Gérer l'erreur en conséquence
+          }
+          return throwError(() => new Error(error));
+        })
+      )
+      .subscribe();
   }
+
+
 
 }

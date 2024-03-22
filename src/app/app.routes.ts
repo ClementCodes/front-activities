@@ -18,8 +18,9 @@ export const routes: Routes = [
     {
         path: 'jardin',
         component: PageJardinComponent
-    },   {
-        path: '**', pathMatch: 'full', redirectTo: '/'
+    },  
+     {
+        path: '**', pathMatch: 'full', redirectTo: '/login'
 
     },
 ];
