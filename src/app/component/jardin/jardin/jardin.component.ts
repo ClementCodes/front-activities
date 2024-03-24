@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-jardin',
-  standalone: false,
+  standalone: true,
   templateUrl: './jardin.component.html',
   styleUrls: ['./jardin.component.scss']
 })

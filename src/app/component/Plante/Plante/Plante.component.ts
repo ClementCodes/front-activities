@@ -10,10 +10,14 @@ import { SharedPersoModule } from '../../../shared/module/shared/sharedPerso.mod
   templateUrl: './Plante.component.html',
   styleUrls: ['./Plante.component.scss']
 })
-export class PlanteComponent  {
+export class PlanteComponent implements OnInit  {
 
   @Input() plantes?: Plante[];
 
+
+  ngOnInit(): void {
+    console.log("mabonne")
+  }
 
  
 }

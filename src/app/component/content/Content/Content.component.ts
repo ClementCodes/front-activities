@@ -6,13 +6,14 @@ import { AuthContentComponent } from '../../../Security/AuthContent/AuthContent.
 import { ButtonsComponent } from '../../buttons/buttons/buttons.component';
 import { SharedPersoModule } from '../../../shared/module/shared/sharedPerso.module';
 import { catchError, map, throwError } from 'rxjs';
+import { HomeComponent } from "../../../Security/pages/home/home-component/home/home.component";
 
 @Component({
-  selector: 'app-content',
-  standalone: true,
-  imports: [WelcomeContentComponent, LoginComponent, AuthContentComponent, ButtonsComponent, SharedPersoModule],
-  templateUrl: './Content.component.html',
-  styleUrls: ['./Content.component.css']
+    selector: 'app-content',
+    standalone: true,
+    templateUrl: './Content.component.html',
+    styleUrls: ['./Content.component.css'],
+    imports: [WelcomeContentComponent, LoginComponent, AuthContentComponent, ButtonsComponent, SharedPersoModule,  HomeComponent]
 })
 
 //petit message pour faire un comit de test pour recuperer sur mac
@@ -37,7 +38,9 @@ export class ContentComponent  {
     .pipe(
       map((response: any) => {
         this.authService.setAuthToken(response.token);
-        this.componentToShow = "messages";
+        /* this.componentToShow = "messages"; */
+        this.componentToShow = "jardin";
+
       }),
       catchError((error: any) => {
         this.authService.setAuthToken(null);

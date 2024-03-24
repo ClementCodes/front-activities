@@ -2,11 +2,13 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { AuthService } from '../../service/Authentification/authService';
 import { CommonModule } from '@angular/common';
 import { catchError, map, throwError } from 'rxjs';
+import { PlanteService } from '../../service/Plante.service';
 
 @Component({
   selector: 'app-AuthContent',
   standalone: true,
   imports: [CommonModule],
+  providers:[PlanteService],
   templateUrl: './AuthContent.component.html',
   styleUrls: ['./AuthContent.component.css']
 })

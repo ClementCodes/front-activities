@@ -62,4 +62,15 @@ export class AuthService {
     return this.http.request(method, environment.dev + url, options);
   }
   
+
+  isAuthenticated(): boolean {
+    // Vérifie si le token d'authentification est présent dans le localStorage
+    // Si présent, renvoie true, sinon renvoie false
+    return this.getAuthToken() !== null;
+  }
+
+
+
+
+
 }

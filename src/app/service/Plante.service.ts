@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { environment } from '../../environement/environment';
@@ -20,11 +20,33 @@ export class PlanteService {
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
-  createPlante(plante: Plante): Observable<Plante> {
+/*   createPlante(plante: Plante): Observable<Plante> {
 
     console.log(this.apiUrl + '/admin/plantes', plante)
     return this.http.post(`${this.apiUrl}/plantes`, plante);
+  } */
+
+
+
+
+  createPlante(planteData: Plante): Observable<Plante> {
+    // Vérifier si l'utilisateur est authentifié
+    if (!this.authService.isAuthenticated()) {
+      // Gérer le cas où l'utilisateur n'est pas authentifié
+      // Par exemple, afficher un message d'erreur ou rediriger vers la page de connexion
+      // return null; ou rediriger vers la page de connexion
+      throw new Error('Utilisateur non authentifié');
+    }
+
+    // En-têtes HTTP avec le token d'authentification
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.authService.getAuthToken()}`);
+
+    // Effectuer la requête HTTP POST pour créer la plante
+    return this.http.post<Plante>(`${this.apiUrl}/plantes`, planteData, { headers });
   }
+
+
+
 
   // READ (GET all plantes)
   getToutesPlantes(): Observable<Plante[]> {
