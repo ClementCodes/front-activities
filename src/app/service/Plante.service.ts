@@ -13,6 +13,9 @@ const routes = {
   providedIn: 'root',
 })
 export class PlanteService {
+  getToutesPlantes() {
+    throw new Error('Method not implemented.');
+  }
   private apiUrl = environment.dev;
 
   constructor(private http: HttpClient, private authService: AuthService) {}

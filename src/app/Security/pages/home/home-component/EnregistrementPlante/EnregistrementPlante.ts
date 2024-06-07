@@ -5,17 +5,16 @@ import { CalendarModule } from 'primeng/calendar';
 import { Plante } from '../../../../../interface/Plante';
 import { PlanteService } from '../../../../../service/Plante.service';
 import { AuthService } from '../../../../../service/Authentification/authService';
-import { catchError, map, throwError } from 'rxjs';
 
 
 @Component({
-  selector: 'app-home',
+  selector: 'enregistrement-plante',
   standalone: true,
   imports: [CalendarModule, ReactiveFormsModule, CalendarModule, RouterOutlet],
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  templateUrl: './EnregistrementPlante.html',
+  styleUrls: ['./EnregistrementPlante.scss']
 })
-export class HomeComponent {
+export class EnregistrementPlante {
 
   nom!: string;
   age!: Date;
@@ -52,35 +51,6 @@ export class HomeComponent {
 
   } 
 
-
-/* 
- onSubmit(): void {
-    this.authService.request(
-      "POST",
-      "/plantes",
-      {
-       plante : this.form.value
-      }
-    )
-    .pipe(
-      map((response: any) => {
-
-        console.log(1)
-        console.log(this.authService.setAuthToken(response.token))
-        this.authService.setAuthToken(response.token);
-         this.componentToShow = "messages"; 
-        this.componentToShow = "jardin"; 
-
-      }),
-      catchError((error: any) => {
-        this.authService.setAuthToken(null);
-  this.componentToShow = "welcome";
-        return throwError(error); 
-      })
-    )
-    .subscribe();
-  }
- */
 
 
 }

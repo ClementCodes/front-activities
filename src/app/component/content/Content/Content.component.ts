@@ -6,7 +6,8 @@ import { AuthContentComponent } from '../../../Security/AuthContent/AuthContent.
 import { ButtonsComponent } from '../../buttons/buttons/buttons.component';
 import { SharedPersoModule } from '../../../shared/module/shared/sharedPerso.module';
 import { catchError, map, throwError } from 'rxjs';
-import { HomeComponent } from '../../../Security/pages/home/home-component/home/home.component';
+import { EnregistrementPlante } from '../../../Security/pages/home/home-component/EnregistrementPlante/EnregistrementPlante';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-content',
@@ -19,16 +20,18 @@ import { HomeComponent } from '../../../Security/pages/home/home-component/home/
     AuthContentComponent,
     ButtonsComponent,
     SharedPersoModule,
-    HomeComponent,
+    EnregistrementPlante,
   ],
 })
 
 
 export class ContentComponent {
   componentToShow: string = 'welcome';
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
-  showComponent(componentToShow: string): void {
+
+
+  showComponent(componentToShow: string, string: any): void {
     this.componentToShow = componentToShow;
   }
   onLogin(input: any): void {
@@ -41,7 +44,7 @@ export class ContentComponent {
         map((response: any) => {
           this.authService.setAuthToken(response.token);
           /* this.componentToShow = "messages"; */
-          this.componentToShow = 'jardin';
+          this.router.navigate(['/jardin']); 
         }),
         catchError((error: any) => {
           this.authService.setAuthToken(null);
@@ -63,7 +66,7 @@ export class ContentComponent {
       .pipe(
         map((response: any) => {
           this.authService.setAuthToken(response.token);
-          this.componentToShow = 'messages';
+          this.router.navigate(['/jardin']); 
         }),
         catchError((error: any) => {
           this.authService.setAuthToken(null);

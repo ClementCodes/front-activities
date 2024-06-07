@@ -7,8 +7,8 @@ import { SharedPersoModule } from '../../../shared/module/shared/sharedPerso.mod
   selector: 'app-Plante',
   standalone:true,
   imports:[SharedPersoModule],
-  templateUrl: './Plante.component.html',
-  styleUrls: ['./Plante.component.scss']
+  templateUrl: './PlanteComponent.html',
+  styleUrls: ['./PlanteComponent.scss']
 })
 export class PlanteComponent implements OnInit  {
 
@@ -17,6 +17,7 @@ export class PlanteComponent implements OnInit  {
 
   ngOnInit(): void {
     console.log("mabonne")
+    console.log(this.plantes)
   }
 
  

@@ -1,14 +1,13 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { LoginComponent } from './Security/Login/Login.component';
-import { HomeComponent } from './Security/pages/home/home-component/home/home.component';
-import { Plante } from './interface/Plante';
-import { PlanteComponent } from './component/Plante/Plante/Plante.component';
+import { EnregistrementPlante } from './Security/pages/home/home-component/EnregistrementPlante/EnregistrementPlante';
+import { PlanteComponent } from './component/Plante/Plante/PlanteComponent';
 
 export const routes: Routes = [
   {
-    path: 'home',
-    component: HomeComponent,
+    path: 'enregistrement-plante',
+    component: EnregistrementPlante,
   },
   {
     path: 'login',
@@ -19,7 +18,7 @@ export const routes: Routes = [
     component: PlanteComponent,
   },
   {
-    path: '**',
+    path: '',
     pathMatch: 'full',
     redirectTo: '/login',
   },

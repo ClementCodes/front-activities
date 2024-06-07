@@ -1,6 +1,9 @@
 
 
-<p>hello</p>
+<p>Page ou se trouve les plantes</p>
+<nav>
+  <a routerLink="/enregistrement-plante">enregistrement-plante</a>
+</nav>
 <div *ngFor="let plante of plantes">
   <p-card styleClass="custom-card" header="{{plante.nom}}" subheader="{{plante.age}}" [style]="{ width: '360px' }">
     <ng-template pTemplate="header">
