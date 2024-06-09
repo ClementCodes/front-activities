@@ -1,24 +1,16 @@
 <h1>Composant principal</h1>
-
-
 <h1>
     Bienvenue
 </h1>
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div> <label for="alphabetic" class="font-bold block mb-2"> Nom de la Plante </label>
-        <input formControlName="nom" pInputText id="alphabetic" pKeyFilter="alpha" class="w-full"
-            placeholder="Nom.." />
+        <input formControlName="nom" pInputText id="alphabetic" pKeyFilter="alpha" class="w-full" placeholder="Nom.." />
     </div>
     <div> <label for="alphabetic" class="font-bold block mb-2">Age de la plante </label>
-
         <p-calendar formControlName="age" [showIcon]="true"></p-calendar>
     </div>
-
     <div><label for="alphabetic" class="font-bold block mb-2">Date du dernier arrosage </label>
-
         <p-calendar formControlName="dateArrosage" [showIcon]="true"></p-calendar>
     </div>
-
     <button type="submit">Soummettre</button>
-
 </form>

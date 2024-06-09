@@ -1,13 +1,9 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { PasswordModule } from 'primeng/password';
-import { DividerModule } from 'primeng/divider';
-import { InputTextModule } from 'primeng/inputtext';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ButtonModule } from 'primeng/button';
-import { Router, RouterLink } from '@angular/router';
-import { PlanteService } from '../../service/Plante.service';
-import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { SharedPersoModule } from '../../shared/module/shared/sharedPerso.module';
+import { AuthService } from '../../service/Authentification/authService';
+import { catchError, map, throwError } from 'rxjs';
+
 @Component({
   selector: 'app-Login',
   standalone: true,
@@ -17,9 +13,12 @@ import { SharedPersoModule } from '../../shared/module/shared/sharedPerso.module
 })
 export class LoginComponent  {
 
-
   @Output() onSubmitLoginEvent = new EventEmitter();
   @Output() onSubmitRegisterEvent = new EventEmitter();
+
+
+  constructor(private authService: AuthService, private router: Router) {}
+
 
   active: string = "login";
   firstName: string = "";
@@ -37,10 +36,60 @@ export class LoginComponent  {
 
   onSubmitLogin(): void {
     this.onSubmitLoginEvent.emit({ "login": this.login, "password": this.password });
+   this.onLogin();
+    console.log("first")
   }
 
   onSubmitRegister(): void {
     this.onSubmitRegisterEvent.emit({ "firstName": this.firstName, "lastName": this.lastName, "login": this.login, "password": this.password });
+    this.onRegister()
   }
+
+
+
+
+  onLogin(): void {
+    this.authService
+      .request('POST', '/login', {
+       login: this.login,
+        password: this.password,
+      })
+      .pipe(
+        map((response: any) => {
+          this.authService.setAuthToken(response.token);
+          this.router.navigate(['/jardin']); 
+        }),
+        catchError((error: any) => {
+          this.authService.setAuthToken(null);
+          return throwError(error);
+        })
+      )
+      .subscribe();
+  }
+
+  onRegister(): void {
+    this.authService
+      .request('POST', '/register', {
+        firstName: this.firstName,
+        lastName: this.lastName,
+        login: this.login,
+        password: this.password,
+      })
+      .pipe(
+        map((response: any) => {
+          this.authService.setAuthToken(response.token);
+          this.router.navigate(['/jardin']); 
+        }),
+        catchError((error: any) => {
+          this.authService.setAuthToken(null);
+          return throwError(error);
+        })
+      )
+      .subscribe();
+  }
+
+
+
+
 
 }
