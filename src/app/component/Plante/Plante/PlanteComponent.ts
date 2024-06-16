@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 
 import { Plante } from '../../../interface/Plante';
 import { SharedPersoModule } from '../../../shared/module/shared/sharedPerso.module';
+import { PlanteService } from '../../../service/Plante.service';
 
 @Component({
   selector: 'app-Plante',
@@ -13,12 +14,18 @@ import { SharedPersoModule } from '../../../shared/module/shared/sharedPerso.mod
 export class PlanteComponent implements OnInit  {
 
   @Input() plantes?: Plante[];
-
+  errorMessage: string = '';
+  constructor(private planteService: PlanteService) { }
 
   ngOnInit(): void {
-    console.log("mabonne")
-    console.log(this.plantes)
+    this.getPlantes();
   }
 
+  getPlantes(): void {
+    this.planteService.getAllPlantes().subscribe({
+      next: (data) => {this.plantes = data , console.log(data)},
+      error: (err) => this.errorMessage = err
+    });
+  }
  
 }
